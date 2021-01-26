@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" href="https://github.com/Denbigh97/Project_2_Red_Team/blob/main/static/assets/img/nba.png?raw=true">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>NBA Data Analytics</title>
+	<title>NBA Games Data Analytics & Salary prediction Model</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -54,7 +54,7 @@
 <body>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="orange" data-image="static\assets\img\texture.jpg">
+        <div class="sidebar" data-color="black" data-image="https://github.com/Denbigh97/Project_2_Red_Team/blob/main/static/assets/img/texture.jpg?raw=true" alt="..."/>
     
         <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
     
@@ -206,11 +206,12 @@
                                         <div class="col-md-10 framemargin">
                                         <div class="header">
                                         <br>
-                                            <h3 class="title">84 PERCENT ACCURACY</h3>
+                                            <h3 class="title"><b>75  PERCENT ACCURACY (TEST DATA)</b></h3>
                                         <hr>
                                         </div>
                                         <div class="content">
-                                            <h3>Machine Learning using Neural Network & KNN</h3>
+                                            
+                                            <h3><b>Machine Learning using Neural Network & KNN </b></h3>
                                             <ul class="outcomes">
                                                 <li>The team developed a machine learning model to predict if a player can earn avarage salary of 7 Milian in a year based on certain attributes </li>
                                                 <li>Attributes are - Age , no of games/year, Field goal %, 3 points %, 2 points %, No of Rebounds, Assists, PST shots, Year,  </li>
@@ -220,9 +221,62 @@
                                                 <li>We did not observe a change in the Accuracy upon increasing the number of rows with player data. </li>
                                                 <li>We also built a KNN classifier model that resulted in a similar accuracy of 84 % as our NN model. </li>
                                                 <li>Considering both NN and KNN models generated similar accuracy levels, we believe our NN model is robust and can be enhanced by adding more data or training it with a more comprehensive data set.</li>
+                                               
+                                                 
                                             <br>
                                             <br>
                                             </ul>
+                                            <table style="width:100%">
+                                                <tr>
+                                                  <th>ACTIVATION</th>
+                                                  <th>INPUT NODES</th>
+                                                  <th>HIDDEN NODES</th>
+                                                  <th>OUTPUT NODES</th>
+                                                  <th>ACCURACY(TEST DATA)</th>
+                                                </tr>
+                                                <tr>
+                                                  <td>reLu</td>
+                                                  <td>9</td>
+                                                  <td>27</td>
+                                                  <td>2</td>
+                                                  <td>75%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>sigmoid</td>
+                                                    <td>9</td>
+                                                    <td>27</td>
+                                                    <td>2</td>
+                                                    <td>74.01%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>linear</td>
+                                                    <td>9</td>
+                                                    <td>27</td>
+                                                    <td>2</td>
+                                                    <td>74.93%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>tanh</td>
+                                                    <td>9</td>
+                                                    <td>27</td>
+                                                    <td>2</td>
+                                                    <td>75%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>tanh</td>
+                                                    <td>9</td>
+                                                    <td>100</td>
+                                                    <td>2</td>
+                                                    <td>74.89%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>sigmoid</td>
+                                                    <td>9</td>
+                                                    <td>150</td>
+                                                    <td>2</td>
+                                                    <td>74.5%</td>
+                                                </tr>
+                                              </table>
                                         </div>
                                         <!-- <div class="header">
                                             <h3 class="title mt-4">Project Outcomes</h3>
