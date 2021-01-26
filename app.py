@@ -91,6 +91,10 @@ def team():
 def hawks():
     return render_template("hawks.html")
 
+@app.route("/templates/compare.html")
+def compare():
+    return render_template("compare.html")
+
 @app.route("/templates/celtics.html")
 def celtics():
     return render_template("celtics.html")
