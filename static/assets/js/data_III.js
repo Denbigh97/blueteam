@@ -1,4 +1,4 @@
-[
+const data =[
   {
     "player": "Aaron Gordon",
     "pos": "PF",
