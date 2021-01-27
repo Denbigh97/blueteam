@@ -1,0 +1,236 @@
+Type 'q()' to quit R.
+
+> help(lm)
+> ?lm
+> data2 <- read.delim(file.choose(), header = T)
+> attach(data2)
+> names(data2)
+[1] "player.pos.age.fg.threep.twop.reb.ast.pts.contract2020.score"
+> data2 <- read.csv(file.choose(), header = T)
+> attach(data2)
+> names(data2)
+ [1] "player"       "pos"          "age"          "fg"           "threep"       "twop"         "reb"          "ast"         
+ [9] "pts"          "contract2020" "score"       
+> mod = lm(contract2020 ~. -player , data = data2)
+> summary(mod)
+
+Call:
+lm(formula = contract2020 ~ . - player, data = data2)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-17202110  -4065549  -1105918   4391494  18644870 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -15916400   11864974  -1.341  0.18326    
+posPF        -1964504    2833613  -0.693  0.48998    
+posPG        -9224751    4200890  -2.196  0.03076 *  
+posSF         1515966    3300605   0.459  0.64716    
+posSG        -1206922    3562830  -0.339  0.73561    
+age            689320     206881   3.332  0.00127 ** 
+fg            9118554   11666357   0.782  0.43657    
+threep      -13983428   13736866  -1.018  0.31152    
+twop        -19328282   14000124  -1.381  0.17095    
+reb            201969     467973   0.432  0.66711    
+ast           2005856     609184   3.293  0.00144 ** 
+pts            794978     172530   4.608 1.38e-05 ***
+score          231475     284348   0.814  0.41784    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7038000 on 87 degrees of freedom
+Multiple R-squared:  0.6375,	Adjusted R-squared:  0.5875 
+F-statistic: 12.75 on 12 and 87 DF,  p-value: 1.372e-14
+
+> plot(mod)
+Hit <Return> to see next plot: 
+Hit <Return> to see next plot: 
+Hit <Return> to see next plot: 
+Hit <Return> to see next plot: 
+> 
+> plot(score, contract2020, main="Scatterplot")
+> plot(pts, contract2020, main="Scatterplot")
+> plot(pts, contract2020, main="pts vs. money",
++      xlab="pts", ylab="contratc2020", pch=18, col="blue")
+
+"plot(pts, contract2020, main="pts vs. money",
+     +      xlab="
+
+> mod1 = lm(contract2020 ~. -player , -age , data = data2)
+> summary(mod1)
+
+Call:
+lm(formula = contract2020 ~ . - player, data = data2, subset = -age)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-16895940  -3791487   -397470   4010529  18312375 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -13155043   13899845  -0.946   0.3472    
+posPF        -2072730    3013785  -0.688   0.4939    
+posPG        -9820452    4520287  -2.173   0.0332 *  
+posSF          734935    3568685   0.206   0.8374    
+posSG        -2754521    3840944  -0.717   0.4757    
+age            572343     246278   2.324   0.0230 *  
+fg           -3699883   13376411  -0.277   0.7829    
+threep      -12664923   14684739  -0.862   0.3914    
+twop         -8577457   15697082  -0.546   0.5865    
+reb            203499     505617   0.402   0.6886    
+ast           2106616     662777   3.178   0.0022 ** 
+pts            798306     191202   4.175 8.44e-05 ***
+score          247325     292800   0.845   0.4012    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7041000 on 70 degrees of freedom
+Multiple R-squared:  0.649,	Adjusted R-squared:  0.5889 
+F-statistic: 10.79 on 12 and 70 DF,  p-value: 9.926e-12
+
+
+> plot(age, pts, main = "age vs pts")
+> plot(age, pts, main="age vs. pts",
++      xlab="ages", ylab="points", pch=18, col="blue")
+> text(age, pts, row.names(data2), cex=0.6, pos=4, col="red")
+> 
+> 
+> plot(age, pts, main="age vs. pts",
++      xlab="ages", ylab="points", pch=18, col="blue")
+> text(age, pts, row.names(data2), cex=0.6, pos=4, col="red")
+> 
+> plot(contract2020, pts, main="money vs. pts",
++      xlab="contract", ylab="points", pch=18, col="blue")
+> text(contract2020, pts, row.names(data2), cex=0.6, pos=4, col="red")
+> 
+> mod1 = lm(contract2020 ~. -player , -age , data = data2)
+> mod2 = lm(contract2020 ~. -player , -age , -score , data = data2)
+Error in lm.wfit(x, y, w, offset = offset, singular.ok = singular.ok,  : 
+  missing or negative weights not allowed
+> cor(pts, Salary)
+Error in is.data.frame(y) : object 'Salary' not found
+
+[1] "player"       "pos"          "age"         
+ [4] "fg"           "threep"       "twop"        
+ [7] "reb"          "ast"          "pts"         
+[10] "contract2020"
+
+plot(contract2020, fitted_mod, main="contract2020 vs mlpredict", 
+xlab="contract2020", ylab="fitted_mod", pch=18, col="blue")
+text(contract2020, fitted_mod, row.names(data2), cex=0.6, pos=4, col="red")
+
+> help(lm)
+> ?lm
+> data2 <- read.csv(file.choose(), header = T)
+> attach(data2)
+> names(data2)
+ [1] "player"       "pos"          "age"         
+ [4] "fg"           "threep"       "twop"        
+ [7] "reb"          "ast"          "pts"         
+[10] "contract2020"
+> data12<-data2[80, ]
+> data13<-data2[81:101, ]
+> 
+ 
+  contrasts can be applied only to factors with 2 or more levels
+> mod = lm(contract2020 ~. -player , data = data2)
+> summary(mod)
+
+Call:
+lm(formula = contract2020 ~ . - player, data = data2)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-17444475  -4027517  -1169317   4666877  18766975 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -17729749   11631638  -1.524 0.131027    
+posPF        -1825344    2823026  -0.647 0.519579    
+posPG        -8687194    4140706  -2.098 0.038772 *  
+posSF         1373156    3289617   0.417 0.677387    
+posSG        -1253991    3555527  -0.353 0.725166    
+age            698071     206205   3.385 0.001064 ** 
+fg           12184235   11020627   1.106 0.271920    
+threep       -8918100   12223297  -0.730 0.467573    
+twop        -15609174   13208325  -1.182 0.240481    
+reb            299409     451539   0.663 0.509009    
+ast           2073539     602326   3.443 0.000884 ***
+pts            833726     165516   5.037 2.49e-06 ***
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 7025000 on 88 degrees of freedom
+Multiple R-squared:  0.6347,	Adjusted R-squared:  0.5891 
+F-statistic:  13.9 on 11 and 88 DF,  p-value: 4.852e-15
+
+
+
+> coef(mod)
+(Intercept)       posPF       posPG       posSF       posSG         age          fg 
+-17729749.0  -1825344.2  -8687194.4   1373155.9  -1253991.4    698071.4  12184235.2 
+     threep        twop         reb         ast         pts 
+ -8918100.0 -15609173.6    299409.0   2073538.9    833725.6 
+> confint(mod)
+                  2.5 %     97.5 %
+(Intercept) -40845186.1  5385688.1
+posPF        -7435515.1  3784826.7
+posPG       -16915977.8  -458411.1
+posSF        -5164266.4  7910578.3
+posSG        -8319854.1  5811871.2
+age            288283.0  1107859.8
+fg           -9716945.8 34085416.2
+threep      -33209333.8 15373133.8
+twop        -41857943.8 10639596.6
+reb           -597928.9  1196746.8
+ast            876542.5  3270535.3
+pts            504796.4  1162654.7
+> plot(contract2020, fg, main="Scatterplot")
+> fitted_mod<- fitted.values(mod)
+
+> fitted_mod
+           1            2            3            4            5            6 
+14484230.571 19865314.729 14908057.298  5463140.483 21944875.310 22358719.580 
+           7            8            9           10           11           12 
+25480372.616  5028165.075  4440961.092 17829020.505  8498423.430 14456118.638 
+          13           14           15           16           17           18 
+32991890.745  6255167.316 23695195.962 11796488.843  4527571.088  8384676.938 
+          19           20           21           22           23           24 
+17633021.890  2749724.259 16948667.241 11271827.071  3664237.379 25930591.033 
+          25           26           27           28           29           30 
+ 7990565.763 26052446.804  -284907.283 10453949.796  7247962.973 32477611.065 
+          31           32           33           34           35           36 
+18741305.351  8151548.007 11159327.377 15690074.442 12852510.344 -2839449.602 
+          37           38           39           40           41           42 
+ 5445237.606 30940483.416 13353586.030 16780353.342 28216169.793 18004903.200 
+          43           44           45           46           47           48 
+ 4897727.765 17145732.167  5107004.643 11132633.038  8785684.943  8340119.107 
+          49           50           51           52           53           54 
+17453268.930 15311171.036  3050993.701 13615037.123  2781698.058 31763744.599 
+          55           56           57           58           59           60 
+10082971.423 23014227.344  2152980.940 19764518.881 10219598.804 16148772.980 
+          61           62           63           64           65           66 
+13537357.611  8629180.128 12126950.626 42116491.852  6552601.767 17326572.152 
+          67           68           69           70           71           72 
+10228963.817  6108433.619 17071907.759 23381530.932 13451450.197 13428329.842 
+          73           74           75           76           77           78 
+ 1091217.018  7672640.383  3199848.591     5843.709 11463213.140 26884767.415 
+          79           80           81           82           83           84 
+17564061.461 26843238.669 33695345.127 14070143.961 16306347.451  5350089.173 
+          85           86           87           88           89           90 
+20289830.540 24090962.042  6623179.712  6231399.308 25431424.095 10254417.340 
+          91           92           93           94           95           96 
+12821955.544 19869951.651  2933091.671 15517899.232 10410672.658 13378772.397 
+          97           98           99          100 
+16630336.304 10855936.737 13958500.256 23512270.117 
+
+> 
+> plot(contract2020, fitted_mod, main="contract2020 vs mlpredict", 
++      xlab="contract2020", ylab="fitted_mod", pch=18, col="blue")
+> text(contract2020, fitted_mod, row.names(data2), cex=0.6, pos=4, col="red")
+
+
+
+
